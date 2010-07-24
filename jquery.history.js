@@ -88,11 +88,19 @@
             setInterval(_.check, 100);
         },
         check: function() {
-            var current_hash = iframeWrapper.get();
-            if(current_hash != _.appState) {
-                locationWrapper.put(current_hash);
-                _.appState = current_hash;
-                _.callback(current_hash);
+            var iframe_hash = iframeWrapper.get(),
+                location_hash = locationWrapper.get();
+
+            if (location_hash != iframe_hash) {
+                if (location_hash == _.appState) {    // user used Back or Forward button
+                    _.appState = iframe_hash;
+                    locationWrapper.put(iframe_hash);
+                    _.callback(iframe_hash); 
+                } else {                              // user loaded new bookmark
+                    _.appState = location_hash;  
+                    iframeWrapper.put(location_hash);
+                    _.callback(location_hash);
+                }
             }
         },
         load: function(hash) {
