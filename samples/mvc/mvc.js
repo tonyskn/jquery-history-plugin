@@ -84,7 +84,8 @@ jQuery(document).ready(function($) {
                 } else {
                     Model.restore(hash);
                 }
-            });
+            },
+            { unescape: "," });
 
         // ----- Utility functions -----
         function strRepeat(str, num) {
