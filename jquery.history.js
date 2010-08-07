@@ -141,8 +141,25 @@
         }
     };
 
+    var Html5Impl = {
+        init: function(callback, options) {
+            initObjects(options);
+            _.callback = callback;
+            _.callback(locationWrapper.get());
+            $(window).bind('hashchange', _.check);
+        },
+        check: function() {
+            _.callback(locationWrapper.get());
+        },
+        load: function(hash) {
+            locationWrapper.put(hash);
+        }
+    };
+
     if($.browser.msie && ($.browser.version < 8 || document.documentMode < 8)) {
         $.extend(_, IframeImpl);
+    } else if("onhashchange" in window) {
+        $.extend(_, Html5Impl);
     } else {
         $.extend(_, SimpleImpl);
     }
