@@ -70,47 +70,54 @@
         }
     }
 
-    // public base interface
-    var _ = {
-        appState: undefined,
-        callback: undefined,
-        init:  function(callback, options) {},
-        check: function() {},
-        load:  function(hash) {}
-    };
-    $.history = _;
+    var implementations = {};
 
-    var SimpleImpl = {
-        init: function(callback, options) {
+    implementations.base = {
+        callback: undefined,
+        type: undefined,
+
+        check: function() {},
+        load:  function(hash) {},
+        init:  function(callback, options) {
             initObjects(options);
             _.callback = callback;
+            _._options = options;
+            _._init();
+        },
+
+        _init: function() {},
+        _options: {}
+    };
+
+    implementations.timer = {
+        _appState: undefined,
+        _init: function() {
             var current_hash = locationWrapper.get();
-            _.appState = current_hash;
+            _._appState = current_hash;
             _.callback(current_hash);
             setInterval(_.check, 100);
         },
         check: function() {
             var current_hash = locationWrapper.get();
-            if(current_hash != _.appState) {
-                _.appState = current_hash;
+            if(current_hash != _._appState) {
+                _._appState = current_hash;
                 _.callback(current_hash);
             }
         },
         load: function(hash) {
-            if(hash != _.appState) {
+            if(hash != _._appState) {
                 locationWrapper.put(hash);
-                _.appState = hash;
+                _._appState = hash;
                 _.callback(hash);
             }
         }
     };
 
-    var IframeImpl = {
-        init: function(callback, options) {
-            initObjects(options);
-            _.callback = callback;
+    implementations.iframeTimer = {
+        _appState: undefined,
+        _init: function() {
             var current_hash = locationWrapper.get();
-            _.appState = current_hash;
+            _._appState = current_hash;
             iframeWrapper.init().put(current_hash);
             _.callback(current_hash);
             setInterval(_.check, 100);
@@ -120,31 +127,29 @@
                 location_hash = locationWrapper.get();
 
             if (location_hash != iframe_hash) {
-                if (location_hash == _.appState) {    // user used Back or Forward button
-                    _.appState = iframe_hash;
+                if (location_hash == _._appState) {    // user used Back or Forward button
+                    _._appState = iframe_hash;
                     locationWrapper.put(iframe_hash);
                     _.callback(iframe_hash); 
                 } else {                              // user loaded new bookmark
-                    _.appState = location_hash;  
+                    _._appState = location_hash;  
                     iframeWrapper.put(location_hash);
                     _.callback(location_hash);
                 }
             }
         },
         load: function(hash) {
-            if(hash != _.appState) {
+            if(hash != _._appState) {
                 locationWrapper.put(hash);
                 iframeWrapper.put(hash);
-                _.appState = hash;
+                _._appState = hash;
                 _.callback(hash);
             }
         }
     };
 
-    var Html5Impl = {
-        init: function(callback, options) {
-            initObjects(options);
-            _.callback = callback;
+    implementations.hashchangeEvent = {
+        _init: function() {
             _.callback(locationWrapper.get());
             $(window).bind('hashchange', _.check);
         },
@@ -156,11 +161,16 @@
         }
     };
 
+    var _ = $.extend({}, implementations.base);
+
     if($.browser.msie && ($.browser.version < 8 || document.documentMode < 8)) {
-        $.extend(_, IframeImpl);
+        _.type = 'iframeTimer';
     } else if("onhashchange" in window) {
-        $.extend(_, Html5Impl);
+        _.type = 'hashchangeEvent';
     } else {
-        $.extend(_, SimpleImpl);
+        _.type = 'timer';
     }
+
+    $.extend(_, implementations[_.type]);
+    $.history = _;
 })(jQuery);
