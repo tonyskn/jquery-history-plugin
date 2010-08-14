@@ -81,6 +81,7 @@ echo empty($dtd) ? "" : $dtd . "\n";
   <h1>jQuery History Plugin Debugger Sample</h1>
 
   <div id="ie-info"></div>
+  <div id="type-info"></div>
   <ul class="history-links">
   <li><a href="#1">load 1</a></li>
   <li><a href="#2">load 2</a></li>
