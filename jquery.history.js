@@ -19,7 +19,12 @@
         },
         get: function(win) {
             var hash = ((win || window).location.hash).replace(/^#/, '');
-            return $.browser.mozilla ? hash : decodeURIComponent(hash);
+            try {
+                return $.browser.mozilla ? hash : decodeURIComponent(hash);
+            }
+            catch (error) {
+                return hash;
+            }
         },
         encoder: encodeURIComponent
     };
