@@ -13,6 +13,8 @@ $(document).ready(function() {
 	if($.browser.msie && $.browser.version == 8) {
 	    $('#ie-info').text('You are using IE8 in version '+ document.documentMode +' compatible mode.');
 	}
+    $('#type-info').text('The plugin is running in '+ $.history.type +' mode.');
+
 
 	$.history.init(function (hash) {
 		Logger.append("[callback called] hash="+ hash);
