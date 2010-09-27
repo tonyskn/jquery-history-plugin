@@ -1,0 +1,45 @@
+<h2>API Reference</h2>
+<p>
+There are 2 methods on <code>jQuery.history</code> object.
+</p>
+<div class="documentation">
+<h3>jQuery.history.init(callback [, options])</h3>
+<p>
+Initializes the plugin. You must call this method exactly once in <code>jQuery(document).ready</code> event.
+</p>
+<pre class="prettyprint">
+jQuery(document).ready(function($){
+
+    $.history.init(function(hash){
+        if(hash == "") {
+            // initialize your app
+        } else {
+            // restore the state from hash
+        }
+    },
+    { unescape: ",/" });
+});
+</pre>
+<p>
+The first parameter is a callback function which is invoked with current hash when URL hash is changed.
+It is also invoked when a page is loaded so you can initialize your application in this function.
+</p>
+<p>
+The second parameter is an option object. Currently only 'unescape' option is available to specify what characters are unescaped in URL hash. For example, if you want to keep the forward slash '/' from being escaped to '%2F', supply <code>{ unescape: "/" }</code>.
+</p>
+<table class="options">
+<caption>Options</caption>
+<tr><th rowspan="3">unescape</th>
+    <td>true [default]</td><td>The plugin encode the URL hash using encodeURICompnent to escape the special characters which are "reserved" in RFC 2396.<code></code></td></tr>
+<tr><td>false</td><td>The plugin does not escape characters at all. This may cause a problem.</td></tr>
+<tr><td>string</td><td>Characters contained in the string is unescaped  e.g. <code>{unescape:"/;"}</code> unescapes '/' and ';'.</td></tr>
+</tr>
+</table>
+<h3>jQuery.history.load(hash)</h3>
+<p>
+Loads a hash into <code>location.hash</code>, creates a new history entry, and invoke the callback function if necessary. Unless the provided hash is changed from current one the callback is not invoked.
+</p>
+<pre class="prettyprint">
+jQuery.history.load("new-hash-value");
+</pre>
+</div>

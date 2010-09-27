@@ -1,0 +1,66 @@
+<h2>History</h2>
+<p>
+This is a brief history of the plugin. For the complete change log see <a href="http://github.com/tkyk/jquery-history-plugin/commits/master">commit logs on github</a>.
+</p>
+<dl class="history">
+<dt>2010-08-02</dt>
+<dd>
+Added an `unescape` option to `$.history.init` to specify what characters are unescaped in the hash.
+</dd>
+<dt>2010-07-23</dt>
+<dd>
+Fixed a bug that prevented IE from executing the callback when the URL was changed by bookmarks. Thanks to jianlin.
+</dd>
+<dt>2010-06-30</dt>
+<dd>
+Fixed a bug that locationWrapper would decode the hash twice on Firefox. Thanks to zano04.
+</dd>
+<dt>2010-05-17</dt>
+<dd>
+Fixed jQuery.history.init to execute callback even if hash is empty.
+</dd>
+<dt>2010-05-08</dt>
+<dd>
+jQuery history had moved to GitHub, and then Takayuki Miwa became the principal maintainer of the project.
+</dd>
+<dd>
+Updated API/code format. Thanks to Kevin Dalman.
+<dd>
+<dt>2009-10-14</dt>
+<dd>
+IE6 secure alert patch offered by Øyvind Smestad. Thanks.
+</dd>
+<dt>2009-10-13</dt>
+<dd>
+Now history plugin works at all mode in IE8.
+</dd>
+<dt>2009-09-13</dt>
+<dd>
+In IE8, the plugin breaks when using a DOCTYPE of XHTML 1.0.
+This problem patch offered by Jonathan. Thanks.
+This version is here. But this version is not work with HTML 4.0 on IE8.
+</dd>
+<dt>2009-06-25</dt>
+<dd>
+Chrome/Safari patch offered by Peter Nguyen. Thanks.
+</dd>
+<dt>2009-06-22</dt>
+<dd>
+Chrome/Safari patch offered by Peter Nguyen. Thanks.
+</dd>
+<dt>2009-06-21</dt>
+<dd>
+Iframe src problem patch offered by Francesco Sullo. Thanks.
+When hash include special characters like aao, plugin does't work correctly on Firefox/IE. This problem was reported by Peter Nguyen. Thanks.
+</dd>
+<dt>2009-06-10</dt>
+<dd>
+History plugin work with "jQuery.noConflict();". NoConflict version works with another framework (prototype, etc...). sample is here.
+This problem was reported by Mat Ellis. Thanks.
+</dd>
+<dt>2009-06-06</dt>
+<dd>
+When hash contains "?" char, there was a problem in the interchangeability between browsers. http://www.mikage.to/jquery/jquery_history.html#1?aaa didn't work on IE. Plugin remove string that following "?" now.
+This problem was reported by Chris Pall. Thanks.
+</dd>
+</dl>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery history plugin</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="prettify/prettify.css" rel="stylesheet" type="text/css" />
+<link href="css/site.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.history.js"></script>
+<script type="text/javascript" src="prettify/prettify.js"></script>
+<script type="text/javascript" src="js/site.js"></script>
+</head>
+<body>
+<div id="main_container">
+<div id="header">
+<h1>jQuery history plugin</h1>
+</div>
+<div id="navigation">
+<a href="">Home</a>
+ <a href="#demos">Demos</a>
+ <a href="#documentation">Documentation</a>
+ <a href="#history">History</a>
+ <a href="#license">License</a>
+ <a href="#contact">Contact</a> </div>
+<div id="content">
+<h2>About jQuery history</h2>
+<p>
+jQuery history plugin helps you to support back/forward buttons and bookmarks in your javascript applications. You can store the application state into URL hash and restore the state from it.
+</p>
+<p id="download">
+<a href="http://github.com/tkyk/jquery-history-plugin/raw/master/jquery.history.js">Download jquery.history.js</a>
+</p>
+<p>
+<small>jQuery history plugin is hosted on Github. Please visit <a href="http://github.com/tkyk/jquery-history-plugin">the project page</a> for development.</small>
+</p>
+<h2>Supported browsers</h2>
+<ul>
+<li>Internet Explorer 6, 7, and 8+</li>
+<li>Safari 4 and 5+</li>
+<li>Google Chrome 4+</li>
+</ul>
+<p>
+This plugin is built on <a href="http://www.w3.org/TR/html5/history.html#event-hashchange">hashchange event</a>, which is defined in HTML5 and supported in most modern browsers.
+Unless it is supported the plugin works on some fallback mechanisms:
+</p>
+<ul>
+<li>monitoring location.hash by setInterval (Safari 4)</li>
+<li>iframe and setInterval (IE 6, 7, and compatibility mode on IE8)</li>
+</ul>
+<!--
+<h2>Known issues</h2>
+<dl>
+<dt>IE6, 7, and IE8 compatibility mode</dt>
+<dd></dd>
+<dt>IE8 standard mode</dt>
+<dd></dd>
+</dl>
+-->
+</div>
+<div id="footer">&copy; 2010 <a href="http://wp.serpere.info">Takayuki Miwa</a> | Design By <a href="http://www.zilladesigns.net">Jeremy D.</a> </div>
+</div>
+</body>
+</html>
