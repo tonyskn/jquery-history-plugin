@@ -1,22 +1,26 @@
 # jQuery History Plugin
 
-This is a jQuery plugin to handle back/forward buttons and bookmarks.
-You can save the application state to the URL hash values.
+jQuery history plugin helps you to support back/forward buttons and bookmarks in your javascript applications.
+You can store the application state into URL hash and restore the state from it.
 
 ## Supported Browsers
 
-IE6, IE7, IE8, Firefox3, Safari4, Safari5, Chrome4, and Chrome5
+- Internet Explorer 6, 7, and 8+
+- Safari 4 and 5+
+- Google Chrome 4+
 
-## Samples
+This plugin is built on hashchange event, which is defined in HTML5 and supported in most modern browsers.
+Unless it is supported the plugin works on some fallback mechanisms:
 
-Samples are included in the samples/ directory and also available at [here](http://www.serpere.info/jquery-history-plugin/samples/).
+- monitoring location.hash by setInterval (Safari 4)
+- iframe and setInterval (IE 6, 7, and compatibility mode on IE8)
 
-## Documentations
+## Demos and Documentations
 
-- [jQuery-history-plugin wiki](http://wiki.github.com/tkyk/jquery-history-plugin/)
+- [jQuery history plugin official web site](http://tkyk.github.com/jquery-history-plugin/)
 
 ## Authors
 
-Originaly developed by Taku Sano (Mikage Sawatari). [www.mikage.to](http://www.mikage.to/jquery/jquery_history.html)
+Originaly developed by Taku Sano (Mikage Sawatari). [www.mikage.to](http://www.mikage.to/)
 
-And forked by Takayuki Miwa. [github/tkyk](http://github.com/tkyk/)
+And now maintained by Takayuki Miwa. [github/tkyk](http://github.com/tkyk/)
