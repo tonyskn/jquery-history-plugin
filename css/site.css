@@ -19,12 +19,16 @@ h3 {
 	margin: 5px 0px 0px 0px;
 }
 
+
+dl {
+    margin: 10px;  
+}
+
 dl.history {
-    margin: 10px;
     font-size: 12px;
 }
 
-dl.history dt {
+dl.known-issues dt, dl.history dt {
     font-weight: bold;
 }
 
